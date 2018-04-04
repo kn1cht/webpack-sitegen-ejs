@@ -40,6 +40,10 @@ const app = {
       filename: 'index.html',
       template: 'src/index.ejs'
     }),
+    new HtmlWebpackPlugin({
+      filename: 'about/index.html',
+      template: 'src/about/index.ejs'
+    }),
     new CopyWebpackPlugin(
       [{ from : `${__dirname}/src` }],
       { ignore : Object.keys(targetTypes).map((ext) => `*.${ext}`) }
