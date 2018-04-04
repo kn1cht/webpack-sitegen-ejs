@@ -36,19 +36,18 @@ const app = {
     }]
   },
   plugins : [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'src/index.ejs'
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'about/index.html',
-      template: 'src/about/index.ejs'
-    }),
     new CopyWebpackPlugin(
       [{ from : `${__dirname}/src` }],
       { ignore : Object.keys(targetTypes).map((ext) => `*.${ext}`) }
     )
   ]
 };
+
+for(const [ targetName, srcName ] of Object.entries(getEntriesList({ ejs : 'html' }))) {
+  app.plugins.push(new HtmlWebpackPlugin({
+    filename : targetName,
+    template : srcName
+  }));
+}
 
 module.exports = app;
