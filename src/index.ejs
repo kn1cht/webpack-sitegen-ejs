@@ -1,7 +1,11 @@
+<% const title = 'Generated with webpack!'; %>
 <!DOCTYPE html>
 <html lang="ja">
+<head>
+  <%- include(`templates/_head`, { title }) -%>
+</head>
 
 <body>
-  <p><%= 'Generated with WebPack!' %></p>
+  <p><%= title %></p>
 </body>
 </html>
